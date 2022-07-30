@@ -24,4 +24,8 @@ public class AppUser {
 
   public AppUser() {
   }
+
+  public String getEmail() {
+    return email;
+  }
 }
