@@ -3,10 +3,12 @@ package de.rieckpil.quickstarts.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-public class AppUser {
+public class AppUser implements Serializable {
 
   @Id
   @GeneratedValue
@@ -27,5 +29,22 @@ public class AppUser {
 
   public String getEmail() {
     return email;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public LocalDateTime getBirthDate() {
+    return birthDate;
+  }
+
+  @Override
+  public String toString() {
+    return "AppUser{" +
+            "email='" + email + '\'' +
+            ", password='" + password + '\'' +
+            ", birthDate=" + birthDate +
+            '}';
   }
 }
