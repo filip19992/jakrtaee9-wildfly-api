@@ -1,5 +1,6 @@
 package de.rieckpil.quickstarts.service;
 
+import de.rieckpil.quickstarts.exception.UserNotFoundException;
 import de.rieckpil.quickstarts.model.AppUser;
 import de.rieckpil.quickstarts.repository.AppUserDao;
 
@@ -25,7 +26,7 @@ public class AppUserService {
     public AppUser findByEmail(String email) {
         try {
             return repository.findByEmail(email);
-        } catch (Exception e) {
+        } catch (UserNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

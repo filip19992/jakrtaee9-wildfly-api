@@ -1,5 +1,6 @@
 package de.rieckpil.quickstarts.repository;
 
+import de.rieckpil.quickstarts.exception.UserNotFoundException;
 import de.rieckpil.quickstarts.model.AppUser;
 
 import java.time.LocalDateTime;
@@ -28,11 +29,11 @@ public class AppUserDao {
     }
 
 
-    public AppUser findByEmail(String email) throws Exception {
+    public AppUser findByEmail(String email) throws UserNotFoundException {
         Optional<AppUser> userByEmail = listOfAllUsers.stream().filter(c -> c.getEmail().equals(email)).findFirst();
         if(userByEmail.isPresent())
             return userByEmail.get();
         else
-            throw new Exception("User not found");
+            throw new UserNotFoundException("Cant find user with this email: " + email);
     }
 }
