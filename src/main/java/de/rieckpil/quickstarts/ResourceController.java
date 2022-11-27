@@ -12,19 +12,11 @@ import java.io.InputStream;
 
 @Path("index")
 public class ResourceController {
-
-
-  private static final String indexPath =
-    "C:\\Users\\user\\OneDrive\\Pulpit\\projekty-java-spring\\demo\\quickstart-jakarta-ee-guides\\deployment-to-wildfly-intellij\\src\\main\\resources\\static\\index.html";
-
-
+  InputStream index = ResourceController.class.getResourceAsStream("/static/index.html");
 
   @GET
   @Produces({MediaType.TEXT_HTML})
-
   public InputStream getHomePage() throws FileNotFoundException {
-    File f = new File(indexPath);
-    return new FileInputStream(f);
+    return index;
   }
-
 }
